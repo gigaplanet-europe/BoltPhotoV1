@@ -17,11 +17,21 @@ body {
     font-size: 16px;
 }
 
+/* Page Container - A4 Style Layout */
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 8px 32px rgba(110, 110, 110, 0.2);
+    min-height: 100vh;
+    position: relative;
+}
+
 /* Container */
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 /* Navigation */
@@ -30,16 +40,17 @@ body {
     box-shadow: 0 2px 10px rgba(110, 110, 110, 0.1);
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 1000;
     transition: all 0.3s ease;
     border-bottom: 1px solid #D1D2D7;
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,38 +112,34 @@ body {
 .main-content {
     margin-top: 70px;
     min-height: calc(100vh - 140px);
+    background: white;
 }
 
-/* Content Sections - White background with shadows */
+/* Content Sections */
 .hero,
 .latest-work,
 .page-header,
 .exhibitions,
 .contact-section {
     background: white;
-    margin: 40px 0;
-    box-shadow: 0 4px 20px rgba(110, 110, 110, 0.15);
-    border-radius: 8px;
     position: relative;
 }
 
 .hero {
-    margin-top: 40px;
     padding: 80px 0;
+    border-bottom: 1px solid #D1D2D7;
 }
 
-.hero::after,
-.latest-work::after,
-.exhibitions::after,
-.contact-section::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #D1D2D7, transparent);
+.latest-work,
+.exhibitions,
+.contact-section {
+    padding: 80px 0;
+    border-bottom: 1px solid #D1D2D7;
+}
+
+.page-header {
+    padding: 60px 0 40px;
+    border-bottom: 1px solid #D1D2D7;
 }
 
 .hero-content {
@@ -225,10 +232,6 @@ body {
 }
 
 /* Latest Work Section */
-.latest-work {
-    padding: 80px 0;
-}
-
 .section-title {
     font-size: 2.5rem;
     text-align: center;
@@ -278,17 +281,12 @@ body {
 }
 
 /* Page Header */
-.page-header {
-    padding: 60px 0 40px;
-    text-align: center;
-    margin-top: 40px;
-}
-
 .page-title {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: #6E6E6E;
+    text-align: center;
 }
 
 .page-subtitle {
@@ -296,13 +294,10 @@ body {
     color: #ABAFB8;
     max-width: 600px;
     margin: 0 auto;
+    text-align: center;
 }
 
 /* Exhibitions Page */
-.exhibitions {
-    padding: 60px 0;
-}
-
 .exhibitions-filter {
     display: flex;
     justify-content: center;
@@ -338,13 +333,14 @@ body {
 }
 
 .exhibition-card {
-    background: white;
+    background: #fafafa;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     opacity: 1;
     transform: scale(1);
+    border: 1px solid #D1D2D7;
 }
 
 .exhibition-card:hover {
@@ -404,6 +400,7 @@ body {
 
 .exhibition-info {
     padding: 30px;
+    background: white;
 }
 
 .exhibition-title {
@@ -431,10 +428,6 @@ body {
 }
 
 /* Contact Page */
-.contact-section {
-    padding: 60px 0;
-}
-
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -686,9 +679,7 @@ body {
     color: #6E6E6E;
     text-align: center;
     padding: 30px 0;
-    margin: 40px 0 0 0;
-    box-shadow: 0 -4px 20px rgba(110, 110, 110, 0.15);
-    border-radius: 8px 8px 0 0;
+    border-top: 1px solid #D1D2D7;
 }
 
 .footer p {
@@ -698,6 +689,21 @@ body {
 
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
+    .page-container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    .nav-container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
     .hero-content {
         gap: 40px;
     }
@@ -712,6 +718,21 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+    .page-container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    .nav-container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -790,27 +811,15 @@ body {
         position: static;
     }
 
-    .container {
-        padding: 0 15px;
-    }
-
-    .hero {
-        padding: 50px 0;
-    }
-
-    .latest-work,
-    .exhibitions,
-    .contact-section {
-        padding: 50px 0;
-    }
-
-    /* Adjust margins for mobile */
     .hero,
     .latest-work,
-    .page-header,
     .exhibitions,
     .contact-section {
-        margin: 20px 0;
+        padding: 50px 0;
+    }
+
+    .page-header {
+        padding: 40px 0 30px;
     }
 }
 
@@ -834,11 +843,6 @@ body {
 
     .filter-btn {
         width: 200px;
-    }
-
-    .exhibition-card,
-    .work-item {
-        margin: 0 10px;
     }
 
     .contact-card,
